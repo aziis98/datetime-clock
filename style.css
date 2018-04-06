@@ -1,0 +1,121 @@
+
+html, body {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+
+	font-family: 'IBM Plex Mono', monospace;
+	font-weight: 300;
+	font-size: 2.1vh;
+}
+
+body {
+	overflow-x: hidden;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+main {
+	width: 100vw;
+	height: 200vh;
+}
+
+section {
+	width: 100%;
+	height: 50%;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.clock, .calendar {
+	width: 45vmax;
+	height: 45vmax;
+	user-select: none;
+}
+
+.calendar {
+	display: grid;
+	grid-template-rows: 20% auto 5%;
+	grid-template-columns: auto;
+	grid-template-areas: "message" "table" ".";
+}
+
+.calendar .title {
+	grid-area: message;
+	text-transform: capitalize;
+	font-weight: 300;
+	font-size: 3vh;
+}
+
+.calendar .table {
+	grid-area: table;
+
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	grid-auto-rows: 1fr;
+}
+
+.table > .day {
+	font-size: 2.1vh;
+	align-self: center;
+	justify-self: center;
+
+	background: transparent;
+	border-radius: 100px;
+	height: 4.5vh;
+	width: 4.5vh;
+
+	transition: background 150ms ease-out;
+}
+
+.table > .day:hover {
+	background: #f0f0f0;
+}
+
+.table > .is-today {
+	background: #3f81ff !important;
+	color: #fff;
+}
+
+.table .header {
+	font-weight: 500;
+}
+
+/* Mobile Devices */
+@media only screen and (max-width: 768px) {
+	.widgets {
+		flex-direction: column;
+	}
+
+	.divider {
+		width: 90vmin;
+		height: 1px;
+		background: #eee;
+	}
+}
+
+/* Large Screens */
+@media only screen and (min-width: 768px) {
+	.widgets {
+		flex-direction: row;
+	}
+
+	.divider {
+		width: 1px;
+		height: 90vmin;
+		background: #eee;
+	}
+}
+
+/* Utils */
+
+.--center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

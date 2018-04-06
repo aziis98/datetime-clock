@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>DatetimeClock</title>
+
+	<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:300,400,400i,500" rel="stylesheet">
+	<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+	<main>
+		<!-- The Widgets -->
+		<section class="widgets">
+			<div class="clock">
+				<canvas id="clock"></canvas>
+			</div>
+			<div class="divider"></div>
+			<div class="calendar">
+				<div class="title --center">{{localizedMessage}}</div>
+				<div class="table">
+					<!-- Week day name -->
+					<div class="header --center">L</div>
+					<div class="header --center">M</div>
+					<div class="header --center">M</div>
+					<div class="header --center">G</div>
+					<div class="header --center">V</div>
+					<div class="header --center">S</div>
+					<div class="header --center">D</div>
+				
+					<!-- Day Offset -->
+					<div class="--center" v-for="n in monthOffset">&nbsp;</div>
+
+					<!-- Day numbers -->
+					<div :class="{ 'day': true, '--center': true, 'is-today': day - 1 === moment().day()}" v-for="day in moment().daysInMonth()">{{day}}</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- The "Other" Features -->
+		<section class="features --center">
+			More Features Coming Soon
+		</section>
+	</main>
+
+	<!-- Moment JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.0/moment.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.0/locale/it.js"></script>
+	<!-- Vue JS -->
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<!-- index.js -->
+	<script src="./index.js"></script>
+</body>
+</html>
