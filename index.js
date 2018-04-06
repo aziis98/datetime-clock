@@ -1,6 +1,7 @@
 
 // Setup
 moment.locale('it');
+window.scrollTo(0, 1);
 
 const app = new Vue({
 	el: 'main',
