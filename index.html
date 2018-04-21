@@ -34,14 +34,14 @@
 					<div class="--center" v-for="n in monthOffset">&nbsp;</div>
 
 					<!-- Day numbers -->
-					<div :class="{ 'day': true, '--center': true, 'is-today': day - 1 === moment().day()}" v-for="day in moment().daysInMonth()">{{day}}</div>
+					<div :class="{ 'day': true, '--center': true, 'is-today': day === moment().date()}" v-for="day in moment().daysInMonth()">{{day}}</div>
 				</div>
 			</div>
 		</section>
 
 		<!-- The "Other" Features -->
 		<section class="features --center">
-			More Features Coming Soon
+			<textarea v-model="field" cols="100" rows="30"></textarea>
 		</section>
 	</main>
 

@@ -7,7 +7,8 @@ const app = new Vue({
 	el: 'main',
 	data: {
 		monthOffset: 0,
-		localizedMessage: '* Today *'
+		localizedMessage: '* Today *',
+		field: ''
 	},
 	created() {
 		this.monthOffset = moment().date(0).day();
@@ -59,6 +60,10 @@ function updateClock() {
 	const radius = Math.min(width, height) / 2 - 20;
 
 	const ctx = $clock.getContext('2d');
+
+	ctx.resetTransform();
+	ctx.translate(0.5, 0.5);
+
 	ctx.translate(width / 2, height / 2);
 
 	// Rendering Code
