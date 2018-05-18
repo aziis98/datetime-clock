@@ -1,0 +1,39 @@
+/*
+	Questo file è in un nuovo formato chiamato "Date Time Scheduling".
+	Ed i file di questo formato sono in ".dts"
+*/
+
+settings {
+	username: '5vu3fkd948fdsu94';
+}
+
+/* Come fare una sveglia */
+
+ui {
+	variable[--show-stop-alarm-button=true] {
+		button {
+			text: 'Spegni la sveglia';
+			click: set(stop-alarm, true), set(--show-stop-alarm-button, false);
+		}
+	}	
+}
+
+date[day>=Lun,day<=Gio] time[hours=7,minutes>=30,minutes<=45] variable[stop-alarm!=true] {
+	
+	song: 'alarm-1.mp3';
+
+	--show-stop-alarm-button: true;
+	
+	&:after {
+		execute: set(stop-alarm, false);
+	}
+	
+}
+	
+date[day>=Lun,day<=Gio] time[hours>=9,hours<=13] {
+	task: 'Andare a lezione in facoltà';
+}
+
+dynamic {
+   task: 'Fare la lavatrice' {domani:07/04/2018};
+}
